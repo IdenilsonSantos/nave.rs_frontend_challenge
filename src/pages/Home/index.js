@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Edit, Delete } from '@material-ui/icons';
 
 import { ContainerGlobal } from '../../styles/GlobalStyles';
@@ -11,18 +11,30 @@ import {
 import Images from '../../assets/img/IMG_9945.png';
 
 import Header from '../../components/Header';
+import ModalShow from '../../components/ModalShow';
 
 function Home() {
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setModalOpen(false)
+    }
     return (
         <>
             <Header />
+            <ModalShow openmodal={modalOpen} closemodal={closeModal} />
             <ContainerGlobal>
                 <SubHeader>
                     <TitlePage>Navers</TitlePage>
                     <ButtonAdd>Adicionar Navers</ButtonAdd>
                 </SubHeader>
                 <CardsNaversShow>
-                    <CardItem>
+                    <CardItem onClick={() => openModal()}>
                         <CardItemImage src={Images} />
                         <CardItemDetails>
                             <CardItemDetailsInfo>
