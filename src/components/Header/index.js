@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ContainerGlobal } from '../../styles/GlobalStyles';
 import { HeaderComponent, Logo, LogoutButton } from './styles';
@@ -9,7 +10,9 @@ function Header() {
     return (
         <ContainerGlobal>
             <HeaderComponent>
-                <Logo src={logoNavers} />
+                <Link to="/">
+                    <Logo src={logoNavers} />
+                </Link>
                 <LogoutButton>Sair</LogoutButton>
             </HeaderComponent>
         </ContainerGlobal>

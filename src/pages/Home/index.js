@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Edit, Delete } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 import { ContainerGlobal } from '../../styles/GlobalStyles';
 import {
@@ -31,7 +32,9 @@ function Home() {
             <ContainerGlobal>
                 <SubHeader>
                     <TitlePage>Navers</TitlePage>
-                    <ButtonAdd>Adicionar Navers</ButtonAdd>
+                    <Link to="/add">
+                        <ButtonAdd>Adicionar Naver</ButtonAdd>
+                    </Link>
                 </SubHeader>
                 <CardsNaversShow>
                     <CardItem onClick={() => openModal()}>
