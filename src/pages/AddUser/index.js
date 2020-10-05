@@ -31,7 +31,7 @@ function AddUser() {
             <ContainerGlobal>
                 <FormContainer>
                     <SubHeader>
-                        <Link to="/">
+                        <Link to="/home">
                             <ButtonBack><ArrowBackIos /></ButtonBack>
                         </Link>
                         <TitlePage>Adicionar Naver</TitlePage>

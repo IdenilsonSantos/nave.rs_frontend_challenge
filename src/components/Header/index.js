@@ -10,7 +10,7 @@ function Header() {
     return (
         <ContainerGlobal>
             <HeaderComponent>
-                <Link to="/">
+                <Link to="/home">
                     <Logo src={logoNavers} />
                 </Link>
                 <LogoutButton>Sair</LogoutButton>
