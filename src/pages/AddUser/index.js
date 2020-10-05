@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowBackIos } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
@@ -9,12 +9,25 @@ import {
 } from './styles';
 
 import Header from '../../components/Header';
+import ModalSuccess from '../../components/ModalSuccess';
 
 function AddUser() {
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = (e) => {
+        e.preventDefault();
+        setModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setModalOpen(false)
+    }
 
     return (
         <>
             <Header />
+            <ModalSuccess openmodal={modalOpen} closemodal={closeModal} />
             <ContainerGlobal>
                 <FormContainer>
                     <SubHeader>
@@ -23,7 +36,7 @@ function AddUser() {
                         </Link>
                         <TitlePage>Adicionar Naver</TitlePage>
                     </SubHeader>
-                    <Form>
+                    <Form onSubmit={openModal}>
                         <FormGroup>
                             <Label for="name">Nome</Label>
                             <Input id="name" name="name" type="text" placeholder="Nome" />
@@ -49,7 +62,7 @@ function AddUser() {
                             <Input id="url_user" name="url_user" type="text" placeholder="URL da foto do Naver" />
                         </FormGroup>
                         <ButtonSaveContainer>
-                            <ButtonSave>Salvar</ButtonSave>
+                            <ButtonSave type="submit">Salvar</ButtonSave>
                         </ButtonSaveContainer>
                     </Form>
                 </FormContainer>
