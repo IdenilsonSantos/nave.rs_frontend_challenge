@@ -92,3 +92,15 @@ export const DeleteEditAction = styled.button`
     background: none;
     cursor: pointer
 `;
+
+export const NoData = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+`;
+
+export const TextDesc = styled.h3`
+    margin-top: 80px;
+`;

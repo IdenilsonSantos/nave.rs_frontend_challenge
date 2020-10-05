@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Edit, Delete } from '@material-ui/icons';
 
 import {
     Modal, ModalContainer, Image, Details, DetailsHeader, DetailsActions,
@@ -6,19 +8,44 @@ import {
     Info, Label, InfoText, DeleteEditAction
 } from './styles';
 
-import { Edit, Delete } from '@material-ui/icons';
+import { dateCalculateYear } from '../utils/convertDate';
 
-function ModalShow({ openmodal, closemodal }) {
+import ModalConfirm from '../ModalConfirm';
 
-    const [displayBlock, setDisplayBlock] = useState('display-block')
+function ModalShow({ openmodal, closemodal, user }) {
+
+    const [modalOpenConfirm, setModalOpenConfirm] = useState(false);
+    const [userIdSelect, setUserIdSelect] = useState();
+
+    const history = useHistory();
+
+    const openModalConfirm = (id) => {
+        setModalOpenConfirm(true);
+        setUserIdSelect(id)
+    }
+
+    const closeModalConfirm = () => {
+        setModalOpenConfirm(false)
+    }
+
+    const handleDeleteEdit = async ({ action }, id) => {
+        if (action === 'edit') {
+            history.push({ pathname: '/edit', id })
+        }
+        else {
+            closemodal();
+            openModalConfirm(id);
+        }
+    }
 
     return (
         <>
+            <ModalConfirm openmodalconfirm={modalOpenConfirm} closemodalconfirm={closeModalConfirm} userid={userIdSelect} />
             {
-                openmodal ?
+                openmodal && user != null ?
                     <Modal>
                         <ModalContainer>
-                            <Image />
+                            <Image src={user.url} />
                             <Details>
                                 <DetailsHeader>
                                     <ButtonClose onClick={closemodal}>X</ButtonClose>
@@ -26,25 +53,25 @@ function ModalShow({ openmodal, closemodal }) {
                                 <DetailsInfoContainer>
                                     <DetailsInfo>
                                         <NameFunction>
-                                            <Name>Juliano Reis</Name>
-                                            <Function>Front-end Developer</Function>
+                                            <Name>{user.name}</Name>
+                                            <Function>{user.function}</Function>
                                         </NameFunction>
                                         <Info>
                                             <Label>Idade</Label>
-                                            <InfoText>Lorem ipsum</InfoText>
+                                            <InfoText>{dateCalculateYear(user.birthdate)}</InfoText>
                                         </Info>
                                         <Info>
                                             <Label>Tempo de empresa</Label>
-                                            <InfoText>Lorem ipsum</InfoText>
+                                            <InfoText>{dateCalculateYear(user.birthdate)} anos</InfoText>
                                         </Info>
                                         <Info>
                                             <Label>Projetos que participou</Label>
-                                            <InfoText>Lorem ipsum</InfoText>
+                                            <InfoText>{user.project}</InfoText>
                                         </Info>
                                     </DetailsInfo>
                                     <DetailsActions>
-                                        <DeleteEditAction><Delete /></DeleteEditAction>
-                                        <DeleteEditAction><Edit /></DeleteEditAction>
+                                        <DeleteEditAction onClick={() => handleDeleteEdit({ action: 'delete' }, user.id)}><Delete /></DeleteEditAction>
+                                        <DeleteEditAction onClick={() => handleDeleteEdit({ action: 'edit' }, user.id)}><Edit /></DeleteEditAction>
                                     </DetailsActions>
                                 </DetailsInfoContainer>
                             </Details>

@@ -5,7 +5,8 @@ import {
     ButtonClose, MessageInfoContainer, MessageInfo, InfoTitle, InfoDescription
 } from './styles';
 
-function ModalSuccess({ openmodal, message, description }) {
+function ModalInfo({ openmodal, closemodal, info }) {
+
     return (
         <>
             {
@@ -18,8 +19,8 @@ function ModalSuccess({ openmodal, message, description }) {
                                 </MessageHeader>
                                 <MessageInfoContainer>
                                     <MessageInfo>
-                                        <InfoTitle>Naver criado</InfoTitle>
-                                        <InfoDescription>Naver criado com sucesso!</InfoDescription>
+                                        <InfoTitle>Naver {info}</InfoTitle>
+                                        <InfoDescription>Naver {info} com sucesso!</InfoDescription>
                                     </MessageInfo>
                                 </MessageInfoContainer>
                             </Message>
@@ -29,4 +30,4 @@ function ModalSuccess({ openmodal, message, description }) {
         </>);
 }
 
-export default ModalSuccess;
+export default ModalInfo;
