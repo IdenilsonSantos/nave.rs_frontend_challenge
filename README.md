@@ -31,7 +31,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias.
 1. Faça o clone do projeto :
 
 ```sh
-  $ git clone https://github.com/IdenilsonSantos/Ecoleta.git
+  $ git clone https://github.com/IdenilsonSantos/nave.rs_frontend_challenge.git
 ```
 
 2. Executando a Aplicação:
@@ -40,8 +40,8 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias.
   # Instale as dependências
   $ npm install
 
-  # Inicie a aplicação web
-  $ cd web
+  # Inicie a aplicação
+  $ cd pasta_projeto
   $ npm start
 
 ```
