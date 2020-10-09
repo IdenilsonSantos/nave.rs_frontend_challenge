@@ -62,7 +62,7 @@ function ModalShow({ openmodal, closemodal, user }) {
                                         </Info>
                                         <Info>
                                             <Label>Tempo de empresa</Label>
-                                            <InfoText>{dateCalculateYear(user.birthdate)} anos</InfoText>
+                                            <InfoText>{dateCalculateYear(user.admission_date)} anos</InfoText>
                                         </Info>
                                         <Info>
                                             <Label>Projetos que participou</Label>

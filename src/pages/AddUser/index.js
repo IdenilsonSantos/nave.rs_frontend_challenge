@@ -15,9 +15,6 @@ import Header from '../../components/Header';
 import ModalInfo from '../../components/ModalInfo';
 import { convertDate } from '../../components/utils/convertDate';
 
-
-
-
 function AddUser() {
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -54,6 +51,7 @@ function AddUser() {
             try {
                 const admission_date = convertDate(dateWork);
                 const birthdate = convertDate(birth);
+                console.log(admission_date, birthdate);
                 const response = await api.post("navers", {
                     job_role, admission_date, birthdate, project, name, url
                 }, configHeaders);
